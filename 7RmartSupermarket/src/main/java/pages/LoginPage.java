@@ -17,13 +17,14 @@ public class LoginPage {
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")
 	WebElement signin;
 
-	//dashboard for successful login validation
+	// dashboard for successful login validation
 
 	// for validation 1 -login and check if Dashboard is displayed
 	@FindBy(xpath = "//p[text()='Dashboard']")
 	WebElement dashboard;
-	
-	// for validation 2 - to check if validation message is displayed for invalid credentials.
+
+	// for validation 2 - to check if validation message is displayed for invalid
+	// credentials.
 	@FindBy(css = "div.alert.alert-danger.alert-dismissible")
 	WebElement validationMessageForInvalidLogin;
 
@@ -47,17 +48,16 @@ public class LoginPage {
 		signin.click();
 
 	}
+
 //for successful login - validation
-	public boolean isDashboardDisplayedOnLogin()
-	{
-	//	WaitUtility waitutility=new WaitUtility();
-	//	waitutility.waitForAlertToBeVisible(driver,dashboard);
+	public boolean isDashboardDisplayedOnLogin() {
+		// WaitUtility waitutility=new WaitUtility();
+		// waitutility.waitForAlertToBeVisible(driver,dashboard);
 		return dashboard.isDisplayed();
 	}
-	
-	//for invalid login-show validation message
-	public boolean validationMessageForInvalidLoginDisplayed()
-	{
+
+	// for invalid login-show validation message
+	public boolean validationMessageForInvalidLoginDisplayed() {
 		return validationMessageForInvalidLogin.isDisplayed();
 	}
 }

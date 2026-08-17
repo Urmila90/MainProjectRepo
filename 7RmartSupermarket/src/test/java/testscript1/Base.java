@@ -13,27 +13,33 @@ import utilities.WaitUtility;
 import java.time.Duration;
 
 public class Base {
-	
-		public WebDriver driver;
-		@BeforeMethod
-		public void browserInitialization() 
+
+	public WebDriver driver;
+
+	@BeforeMethod(alwaysRun = true)
+		@Parameters("browser")
+		public void browserInitialization(String browser) throws Exception 
 		{
-		
+		if(browser.equalsIgnoreCase("chrome"))
+		{
 		driver=new ChromeDriver();
+			}
+		else if(browser.equalsIgnoreCase("edge"))
+			{
+			driver=new EdgeDriver();
+
+			}
+		else
+			{
+			throw new Exception("invalid");
+			}
 		driver.get("https://groceryapp.uniqassosiates.com/admin");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
 		driver.manage().window().maximize();
-		
 	 	}
-		@AfterMethod
-		public void quitAndClose()
-		{
-			driver.quit();
-		}
-		
-		}
-		
 
-	
-
-
+	@AfterMethod(alwaysRun = true)
+	public void quitAndClose() {
+		driver.quit();
+	}
+}

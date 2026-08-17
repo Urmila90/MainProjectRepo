@@ -10,6 +10,7 @@ import utilities.FileUploadUtility;
 import utilities.PageUtility;
 
 public class CategoryPage {
+	PageUtility pageutility = new PageUtility();
 
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")
 	WebElement categoryMoreInfo;
@@ -79,18 +80,18 @@ public class CategoryPage {
 	}
 
 	public void showOnTopMenu() {
-		PageUtility pageutility = new PageUtility();
+		// PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, showOnTopMenu);
 	}
 
 	public void showOnLeftMenu() {
-		PageUtility pageutility = new PageUtility();
+		// PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, showOnLeftMenu);
 		// showOnLeftMenu.click();
 	}
 
 	public void clickSave() {
-		PageUtility pageutility = new PageUtility();
+		// PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, saveCategory);
 		// saveCategory.click();
 	}

@@ -1,14 +1,9 @@
 package pages;
 
-import java.time.Duration;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.PageUtility;
 
@@ -17,50 +12,45 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
 	WebElement manageNewsMoreInfo;
 	public WebDriver driver;
-	
-	@FindBy(xpath="(//i[@class='fas fa-edit'])[1]")
+
+	@FindBy(xpath = "(//i[@class='fas fa-edit'])[1]")
 	WebElement NewButton;
-	
-	@FindBy(xpath="//textarea[@id='news']")
+
+	@FindBy(xpath = "//textarea[@id='news']")
 	WebElement enterNews;
-	
-	@FindBy(xpath="//button[@type='submit']")
+
+	@FindBy(xpath = "//button[@type='submit']")
 	WebElement saveNews;
-	
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement NewsCreatedSuccessfullyAlert;
 
 	public ManageNewsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-		public void clickManageNewsMoreInfo() {
 
-		//used to click on Manage news-More info
+	public void clickManageNewsMoreInfo() {
+
+		// used to click on Manage news-More info
 		PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, manageNewsMoreInfo);
 
 	}
-	
-	public void SaveNews()
-	{
+
+	public void SaveNews() {
 		saveNews.click();
 	}
-	
-	
-	public void clickNewButton()
-	{
+
+	public void clickNewButton() {
 		NewButton.click();
 	}
-	
-	public void enterNews(String news)
-	{
-	enterNews.sendKeys(news);
+
+	public void enterNews(String news) {
+		enterNews.sendKeys(news);
 	}
-	
-	public boolean newCreatedSuccessfullyAlertIsDisplayed()
-	{
+
+	public boolean newCreatedSuccessfullyAlertIsDisplayed() {
 		return NewsCreatedSuccessfullyAlert.isDisplayed();
 	}
 

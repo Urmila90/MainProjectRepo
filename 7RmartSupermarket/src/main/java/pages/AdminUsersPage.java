@@ -21,7 +21,7 @@ public class AdminUsersPage {
 	WebElement New;
 
 	// Admin Users page
-	//Username field
+	// Username field
 	@FindBy(xpath = "//input[@id='username']")
 	WebElement username;
 

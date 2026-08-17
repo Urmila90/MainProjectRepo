@@ -11,19 +11,20 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base {
-	@Test(priority = 1,retryAnalyzer = retry.Retry.class)
+	@Test(priority = 1, retryAnalyzer = retry.Retry.class, groups = "regression")
 	public void verifyUserIsAbleToLoginWithValidCredentials() throws IOException {
-		String username1=ExcelUtility.getStringData(1,0,"loginpage");
-		String password1=ExcelUtility.getStringData(1, 1, "loginpage");
-		LoginPage loginpage=new LoginPage(driver);
+		String username1 = ExcelUtility.getStringData(1, 0, "loginpage");
+		String password1 = ExcelUtility.getStringData(1, 1, "loginpage");
+		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserName(username1);
 		loginpage.enterPassword(password1);
 		loginpage.clickSignin();
-		
-		boolean homepage=loginpage.isDashboardDisplayedOnLogin();
+
+		boolean homepage = loginpage.isDashboardDisplayedOnLogin();
 		Assert.assertTrue(homepage);
-		
+
 	}
+
 	@Test(priority = 2)
 	public void verifyUserIsAbleToLoginWithvalidUserNameAndInvalidPassword() throws IOException {
 		String username2 = ExcelUtility.getStringData(2, 0, "loginpage");
@@ -74,7 +75,3 @@ public class LoginTest extends Base {
 		Assert.assertTrue(InvalidUserNameInvalidPasswordValidation);
 	}
 }
-
-	
-
-
