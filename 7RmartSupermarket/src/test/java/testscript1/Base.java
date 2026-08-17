@@ -9,6 +9,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import utilities.WaitUtility;
+import java.time.Duration;
 
 public class Base {
 	
@@ -19,7 +21,7 @@ public class Base {
 		
 		driver=new ChromeDriver();
 		driver.get("https://groceryapp.uniqassosiates.com/admin");
-		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
 		driver.manage().window().maximize();
 		
 	 	}

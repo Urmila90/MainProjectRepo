@@ -1,8 +1,10 @@
 package utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class PageUtility {
@@ -31,6 +33,40 @@ public class PageUtility {
 	    js.executeScript("arguments[0].click();", element);
 	}
 	
+	public void dragAndDropAction(WebDriver driver, WebElement source, WebElement target)
+	{
+	Actions actions=new Actions(driver);
+	actions.dragAndDrop(source, target).perform();
+	}
+	
+	public void rightClick(WebDriver driver, WebElement element)
+	{
+		Actions actions=new Actions(driver);
+		actions.contextClick(element).perform();
+	}
+	
+	public void mouseHover(WebDriver driver, WebElement element)
+	{
+		Actions actions=new Actions(driver);
+		actions.moveToElement(element).perform();
+	}
+	
+	public void doubleClick(WebDriver driver, WebElement element)
+	{
+		Actions actions=new Actions(driver);
+		actions.doubleClick(element).perform();
+	}
+	
+	public void click(WebDriver driver, WebElement element)
+	{
+	//click method in Action class is used when normal click method does not work
+		
+		// showmessage.click();
+		Actions obj2=new Actions(driver);
+		obj2.click(element).perform();
+
+		
+	}
 
 }
 
