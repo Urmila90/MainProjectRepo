@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="testscript1.AdminUsersTest">
+        <methods>
+          <include name="quitAndClose"/>
+          <include name="AdminUSersPageIsLoadedWhenMoreInfoIsClicked"/>
+          <include name="browserInitialization"/>
+        </methods>
+      </class> <!-- testscript1.AdminUsersTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
