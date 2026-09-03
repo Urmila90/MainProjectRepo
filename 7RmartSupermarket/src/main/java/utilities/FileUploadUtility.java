@@ -9,11 +9,11 @@ import java.awt.event.KeyEvent;
 import org.openqa.selenium.WebElement;
 
 public class FileUploadUtility {
-	
-	public void fileUploadUsingSendKeys(WebElement element, String filepath)
-	{
-	element.sendKeys(filepath);	
+
+	public void fileUploadUsingSendKeys(WebElement element, String filepath) {
+		element.sendKeys(filepath);
 	}
+
 	public void fileuploadUsingRobotClass(String filepath) throws AWTException {
 		StringSelection ss = new StringSelection(filepath);
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);

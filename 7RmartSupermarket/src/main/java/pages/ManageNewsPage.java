@@ -8,9 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.PageUtility;
 
 public class ManageNewsPage {
+	// moved to Homepage-since all the more info are in home page
 
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
-	WebElement manageNewsMoreInfo;
+	/*
+	 * @FindBy(xpath =
+	 * "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']"
+	 * ) WebElement manageNewsMoreInfo;
+	 */
+
 	public WebDriver driver;
 
 	@FindBy(xpath = "(//i[@class='fas fa-edit'])[1]")
@@ -29,25 +34,30 @@ public class ManageNewsPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	// moved to Homepage-since all the more info are in home page
+	/*
+	 * public void clickManageNewsMoreInfo() {
+	 * 
+	 * // used to click on Manage news-More info PageUtility pageutility = new
+	 * PageUtility(); pageutility.clickUsingJavaScriptExecutor(driver,
+	 * manageNewsMoreInfo);
+	 * 
+	 * }
+	 */
 
-	public void clickManageNewsMoreInfo() {
-
-		// used to click on Manage news-More info
-		PageUtility pageutility = new PageUtility();
-		pageutility.clickUsingJavaScriptExecutor(driver, manageNewsMoreInfo);
-
-	}
-
-	public void SaveNews() {
-		saveNews.click();
-	}
-
-	public void clickNewButton() {
+	public ManageNewsPage clickNewButton() {
 		NewButton.click();
+		return this;
 	}
 
-	public void enterNews(String news) {
+	public ManageNewsPage enterNews(String news) {
 		enterNews.sendKeys(news);
+		return this;
+	}
+
+	public ManageNewsPage SaveNews() {
+		saveNews.click();
+		return this;
 	}
 
 	public boolean newCreatedSuccessfullyAlertIsDisplayed() {

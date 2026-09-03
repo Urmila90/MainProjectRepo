@@ -9,8 +9,13 @@ import org.openqa.selenium.support.ui.Select;
 import utilities.PageUtility;
 
 public class AdminUsersPage {
-	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
-	WebElement adminUsersMoreInfo;
+	/*
+	 * moved to home page
+	 * 
+	 * @FindBy(xpath =
+	 * "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']"
+	 * ) WebElement adminUsersMoreInfo;
+	 */
 
 	// Locate "Admin Users" text -to ensure correct page is loaded on login
 	@FindBy(xpath = "//h1[@class='m-0 text-dark']")
@@ -52,39 +57,47 @@ public class AdminUsersPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickAdminUsersMoreInfo() {
-		adminUsersMoreInfo.click();
-	}
+	/*
+	 * public AdminUsersPage clickAdminUsersMoreInfo() { adminUsersMoreInfo.click();
+	 * return new AdminUsersPage(driver); }
+	 */
 	// To verify if "Admin Users" text is displayed on clicking Admin users option
 	// from Dashboard
 
-	public boolean IsAdminUsersTextDisplayedOnClickingAdminUsersFromDashboard() {
-		return adminUsersTestOnPageLoad.isDisplayed();
+	/*
+	 * public boolean IsAdminUsersTextDisplayedOnClickingAdminUsersFromDashboard() {
+	 * return adminUsersTestOnPageLoad.isDisplayed();
+	 * 
+	 * }
+	 */
 
-	}
-
-	public void clickNewButton() {
+	public AdminUsersPage clickNewButton() {
 		New.click();
+		return this;
 	}
 
 	// Admin Users page
 	// username field
-	public void enterUsername(String adminUsername) {
+	public AdminUsersPage enterUsername(String adminUsername) {
 		username.sendKeys(adminUsername);
+		return this;
 	}
 
-	public void enterPassword(String adminPassword) {
+	public AdminUsersPage enterPassword(String adminPassword) {
 		password.sendKeys(adminPassword);
+		return this;
 	}
 
-	public void userTypeIndex() {
+	public AdminUsersPage userTypeIndex() {
 		PageUtility pageutility = new PageUtility();
 		pageutility.SelectByIndexDropdown(userTypeDropdown, 2);
+		return this;
 
 	}
 
-	public void saveAdminUser() {
+	public AdminUsersPage saveAdminUser() {
 		SaveAdminUser.click();
+		return this;
 	}
 
 	public boolean IsAdminUserSuccessAlertMessageDisplayed() {
@@ -92,8 +105,9 @@ public class AdminUsersPage {
 
 	}
 
-	public boolean isAdminUserAlreadyExistsRedMessageDisplayed() {
-		return AdminUserFailureAlertMessage.isDisplayed();
-	}
+	/*
+	 * public boolean isAdminUserAlreadyExistsRedMessageDisplayed() { return
+	 * AdminUserFailureAlertMessage.isDisplayed(); }
+	 */
 
 }

@@ -35,24 +35,24 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void enterUserName(String username) {
+	public LoginPage enterUserName(String username) { // change void to LoginPage
 		usernameField.sendKeys(username);
+		return this;
 
 	}
 
-	public void enterPassword(String password) {
+	public LoginPage enterPassword(String password) {
 		passwordField.sendKeys(password);
+		return this; // "this is used since it is not navigating to another page.
 	}
 
-	public void clickSignin() {
+	public HomePage clickSignin() {
 		signin.click();
-
+		return new HomePage(driver); // in this case, when user clicks Sign In button, Home page is loaded.
 	}
 
-//for successful login - validation
+	// for successful login - validation
 	public boolean isDashboardDisplayedOnLogin() {
-		// WaitUtility waitutility=new WaitUtility();
-		// waitutility.waitForAlertToBeVisible(driver,dashboard);
 		return dashboard.isDisplayed();
 	}
 
@@ -60,4 +60,5 @@ public class LoginPage {
 	public boolean validationMessageForInvalidLoginDisplayed() {
 		return validationMessageForInvalidLogin.isDisplayed();
 	}
+
 }

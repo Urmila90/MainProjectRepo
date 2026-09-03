@@ -12,8 +12,11 @@ import utilities.PageUtility;
 public class CategoryPage {
 	PageUtility pageutility = new PageUtility();
 
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")
-	WebElement categoryMoreInfo;
+	/*
+	 * @FindBy(xpath =
+	 * "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']"
+	 * ) WebElement categoryMoreInfo;
+	 */
 	public WebDriver driver;
 
 	@FindBy(xpath = "//h1[text()='List Categories']")
@@ -44,56 +47,80 @@ public class CategoryPage {
 	@FindBy(xpath = "//button[text()='Save']")
 	WebElement saveCategory;
 
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement CategoryCreatedSuccessMessage;
+
 	public CategoryPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickCategoryMoreInfoToNavigateToListCategories() {
-		categoryMoreInfo.click();
-	}
+	/*
+	 * public CategoryPage clickCategoryMoreInfoToNavigateToListCategories() {
+	 * categoryMoreInfo.click(); return new CategoryPage(driver); }
+	 */
 
-	public void listCategoriesNewButton() {
+	public CategoryPage listCategoriesNewButton() {
 		listCategoriesNewButton.click();
+		return this;
 	}
 
-	public void enterCategory(String categoryName) {
+	public CategoryPage enterCategory(String categoryName) {
 		category.sendKeys(categoryName);
+		return this;
+
 	}
 
-	public boolean listCategoriesTitleIsDisplayed() {
-		return listCategoriestitle.isDisplayed();
-	}
-
-	public void clickGoodness() {
+	public CategoryPage clickGoodness() {
 		GoodnessGroup.click();
+		return this;
+
 	}
 
-	public void clickOrganic() {
+	public CategoryPage clickOrganic() {
 		organicGroup.click();
+		return this;
+
 	}
 
-	public void chooseImage() {
+	public CategoryPage chooseImage() {
 		FileUploadUtility fileuplaodutility = new FileUploadUtility();
 		fileuplaodutility.fileUploadUsingSendKeys(categoryImage, Constant.IMAGEPATH1);
 		// categoryImage.click();
+		return this;
+
 	}
 
-	public void showOnTopMenu() {
+	public CategoryPage showOnTopMenu() {
 		// PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, showOnTopMenu);
+		return this;
+
 	}
 
-	public void showOnLeftMenu() {
+	public CategoryPage showOnLeftMenu() {
 		// PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, showOnLeftMenu);
 		// showOnLeftMenu.click();
+		return this;
+
 	}
 
-	public void clickSave() {
+	public CategoryPage clickSave() {
 		// PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, saveCategory);
 		// saveCategory.click();
+		return this;
+
+	}
+
+	/*
+	 * public boolean listCategoriesTitleIsDisplayed() { return
+	 * listCategoriestitle.isDisplayed(); }
+	 */
+
+	public boolean isCategoryCreatedSuccessfullyMessageDisplayedOnSuccessfulCategoryAddition() {
+		return CategoryCreatedSuccessMessage.isDisplayed();
 	}
 
 }

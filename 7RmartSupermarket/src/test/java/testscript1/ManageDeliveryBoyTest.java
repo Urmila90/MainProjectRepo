@@ -5,23 +5,28 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageDeliveryBoyPage;
 import utilities.ExcelUtility;
 
 public class ManageDeliveryBoyTest extends Base {
+	HomePage homepage; // added for chaining
+	ManageDeliveryBoyPage deliveryboypage; // added for chaining
 
-	@Test(retryAnalyzer = retry.Retry.class, groups = "regression")
+	@Test(retryAnalyzer = retry.Retry.class, groups = "regression", description = "Load List Delivery Boy page when More Info is clicked and create a new Delivery boy")
 	public void DeliveryBoyCreation() throws IOException {
 		String usernamevalue = ExcelUtility.getStringData(1, 0, "loginpage");
 		String passwordvalue = ExcelUtility.getStringData(1, 1, "loginpage");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUserName(usernamevalue);
-		loginpage.enterPassword(passwordvalue);
+		loginpage.enterUserName(usernamevalue).enterPassword(passwordvalue);
+		// loginpage.enterPassword(passwordvalue);
 		loginpage.clickSignin();
 
-		ManageDeliveryBoyPage deliveryboypage = new ManageDeliveryBoyPage(driver);
-		deliveryboypage.clickManageDeliveryBoyMoreInfo();
+		// for chaining
+		// ManageDeliveryBoyPage deliveryboypage = new ManageDeliveryBoyPage(driver);
+		deliveryboypage = homepage.clickManageDeliveryBoyMoreInfo();
 
 		// boolean
 		// listDeliveryBoy=deliveryboypage.verifyListDeliveryBoyPageIsDisplayed();
@@ -37,16 +42,22 @@ public class ManageDeliveryBoyTest extends Base {
 		String username = ExcelUtility.getStringData(1, 4, "DeliveryBoyInfo");
 		String password = ExcelUtility.getStringData(1, 5, "DeliveryBoyInfo");
 
-		deliveryboypage.enterDeliveryBoyName(name);
-		deliveryboypage.enterDeliveryBoyEmail(email);
-		deliveryboypage.enterDeliveryBoyPhone(phone);
-		deliveryboypage.enterDeliveryBoyAddress(address);
-		deliveryboypage.enterDeliveryBoyUsername(username);
-		deliveryboypage.enterDeliveryBoyPassword(password);
-		deliveryboypage.saveDeliveryBoyDetails();
+		// chaining
+		deliveryboypage.enterDeliveryBoyName(name).enterDeliveryBoyEmail(email).enterDeliveryBoyPhone(phone)
+				.enterDeliveryBoyAddress(address).enterDeliveryBoyUsername(username).enterDeliveryBoyPassword(password)
+				.saveDeliveryBoyDetails();
+		/*
+		 * deliveryboypage.enterDeliveryBoyEmail(email);
+		 * deliveryboypage.enterDeliveryBoyPhone(phone);
+		 * deliveryboypage.enterDeliveryBoyAddress(address);
+		 * deliveryboypage.enterDeliveryBoyUsername(username);
+		 * deliveryboypage.enterDeliveryBoyPassword(password);
+		 * deliveryboypage.saveDeliveryBoyDetails();
+		 */
 
 		boolean deliveryboyCreatedSuccessMessage = deliveryboypage
 				.isSuccessAlertDisplayedOnSuccessfulDeliveryBoyAddition();
-		Assert.assertTrue(deliveryboyCreatedSuccessMessage);
+		Assert.assertTrue(deliveryboyCreatedSuccessMessage, Constant.DELIVERYBOYNOTCREATED);
+
 	}
 }

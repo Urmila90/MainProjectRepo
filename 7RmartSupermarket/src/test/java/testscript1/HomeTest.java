@@ -5,13 +5,13 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 import pages.LoginPage;
-import pages.LogoutPage;
+import pages.HomePage;
 import testscript1.Base;
 import utilities.ExcelUtility;
 
-public class LogoutTest extends Base {
+public class HomeTest extends Base {
 
-	@Test(retryAnalyzer = retry.Retry.class, groups = "regression")
+	@Test(retryAnalyzer = retry.Retry.class, groups = "regression", description = "Load Home page when More Info is clicked")
 	public void verifyUserIsAbleToLogout() throws IOException {
 		// before logout, we need to login first-so add these codes to login by
 		// reading valid credentials from excel file.
@@ -22,7 +22,7 @@ public class LogoutTest extends Base {
 		loginpage.enterPassword(passwordvalue);
 		loginpage.clickSignin();
 
-		LogoutPage logoutpage = new LogoutPage(driver);
+		HomePage logoutpage = new HomePage(driver);
 		logoutpage.clickAdmin();
 		logoutpage.clickLogout();
 

@@ -8,8 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.PageUtility;
 
 public class ManageDeliveryBoyPage {
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy' and @class='small-box-footer']")
-	WebElement manageDeliveryBoyMoreInfo;
+	/*
+	 * @FindBy(xpath =
+	 * "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy' and @class='small-box-footer']"
+	 * ) WebElement manageDeliveryBoyMoreInfo;
+	 */
 
 	@FindBy(xpath = "//h1[text()='List Delivery Boy']")
 	WebElement listDeliveryBoyText;
@@ -48,46 +51,59 @@ public class ManageDeliveryBoyPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickManageDeliveryBoyMoreInfo() {
-		manageDeliveryBoyMoreInfo.click();
-	}
+	/*
+	 * //move to Home page public ManageDeliveryBoyPage
+	 * clickManageDeliveryBoyMoreInfo() { manageDeliveryBoyMoreInfo.click(); return
+	 * new ManageDeliveryBoyPage(driver) }
+	 */
 
-	public boolean verifyListDeliveryBoyPageIsDisplayed() {
-		return listDeliveryBoyText.isDisplayed();
-	}
-
-	public void clickNewButton() {
+	/*
+	 * public boolean verifyListDeliveryBoyPageIsDisplayed() { return
+	 * listDeliveryBoyText.isDisplayed(); }
+	 */
+	public ManageDeliveryBoyPage clickNewButton() {
 		newButton.click();
+		return this;
 	}
 
-	public void enterDeliveryBoyName(String name) {
+	public ManageDeliveryBoyPage enterDeliveryBoyName(String name) {
 		deliveryBoyName.sendKeys(name);
+		return this;
 	}
 
-	public void enterDeliveryBoyEmail(String email) {
+	public ManageDeliveryBoyPage enterDeliveryBoyEmail(String email) {
 		deliveryBoyEmail.sendKeys(email);
+		return this;
+
 	}
 
-	public void enterDeliveryBoyPhone(int phone) {
+	public ManageDeliveryBoyPage enterDeliveryBoyPhone(int phone) {
 		deliveryBoyPhone.sendKeys(String.valueOf(phone));
+		return this;
+
 	}
 
-	public void enterDeliveryBoyAddress(String address) {
+	public ManageDeliveryBoyPage enterDeliveryBoyAddress(String address) {
 		deliveryBoyAddress.sendKeys(address);
+		return this;
 	}
 
-	public void enterDeliveryBoyUsername(String username) {
+	public ManageDeliveryBoyPage enterDeliveryBoyUsername(String username) {
 		deliveryBoyUsername.sendKeys(username);
+		return this;
 	}
 
-	public void enterDeliveryBoyPassword(String password) {
+	public ManageDeliveryBoyPage enterDeliveryBoyPassword(String password) {
 		deliveryBoyPassword.sendKeys(password);
+		return this;
+
 	}
 
-	public void saveDeliveryBoyDetails() {
+	public ManageDeliveryBoyPage saveDeliveryBoyDetails() {
 		PageUtility pageutility = new PageUtility();
 		pageutility.clickUsingJavaScriptExecutor(driver, saveDeliveryBoy);
 		// saveDeliveryBoy.click();
+		return this;
 	}
 
 	public boolean isSuccessAlertDisplayedOnSuccessfulDeliveryBoyAddition() {

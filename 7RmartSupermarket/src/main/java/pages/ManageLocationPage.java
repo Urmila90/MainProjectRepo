@@ -10,10 +10,14 @@ import utilities.PageUtility;
 public class ManageLocationPage {
 	PageUtility pageutility = new PageUtility();
 
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-location' and @class=' nav-link']")
-	WebElement manageLocationMoreInfo;
+	/*
+	 * //move to home page
+	 * 
+	 * @FindBy(xpath =
+	 * "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-location' and @class=' nav-link']"
+	 * ) WebElement manageLocationMoreInfo;
+	 */
 	public WebDriver driver;
-
 	@FindBy(xpath = "//h1[text()='List Locations']")
 	WebElement listLocationsTitle;
 
@@ -43,44 +47,55 @@ public class ManageLocationPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickManageLocationMoreInfoToNavigateToListLocations() {
-		manageLocationMoreInfo.click();
-	}
-
-	public void listLocationsNewButton() {
+	/*
+	 * move to Home page public void
+	 * clickManageLocationMoreInfoToNavigateToListLocations() {
+	 * manageLocationMoreInfo.click(); }
+	 */
+	public ManageLocationPage listLocationsNewButton() {
 		listLocationsNewButton.click();
+		return this;
 	}
 
-	public void countryDropdown(String countryvalue) {
+	public ManageLocationPage countryDropdown(String countryvalue) {
 		// PageUtility pageutility = new PageUtility();
 		pageutility.selectByVisibleTextDropdown(countryDropdown, countryvalue);
 		// pageutility.SelectByIndexDropdown(countryDropdown,1);
+		return this;
+
 	}
 
-	public void statedropdown(String stateValue) {
+	public ManageLocationPage statedropdown(String stateValue) {
 		// PageUtility pageutility=new PageUtility();
 		pageutility.selectByVisibleTextDropdown(stateDropdown, stateValue);
 		// pageutility.SelectByIndexDropdown(stateDropdown,5);
+		return this;
+
 	}
 
-//Verify whether List Locations title is displayed when More Info in Manage Locations is clicked.
-	public boolean listLocationsTitleDisplayedWhenManageLocationsMoreInfoClicked() {
-		return listLocationsTitle.isDisplayed();
-	}
+	/*
+	 * //Verify whether List Locations title is displayed when More Info in Manage
+	 * Locations is clicked. public boolean
+	 * listLocationsTitleDisplayedWhenManageLocationsMoreInfoClicked() { return
+	 * listLocationsTitle.isDisplayed(); }
+	 */
 
-	public void enterLocation(String location) {
+	public ManageLocationPage enterLocation(String location) {
 		enterLocation.sendKeys(location);
+		return this;
 	}
 
-	public void enterDeliveryCharge(int deliveryCharge) {
+	public ManageLocationPage enterDeliveryCharge(int deliveryCharge) {
 		// deliveryCharge is an int, but Selenium's sendKeys() accepts CharSequence
 		// values such as String, not int.
 		// So convert the integer to a String:
 		enterDeliveryCharge.sendKeys(String.valueOf(deliveryCharge));
+		return this;
 	}
 
-	public void SaveLocationInfo() {
+	public ManageLocationPage SaveLocationInfo() {
 		saveLocationInformation.click();
+		return this;
 	}
 
 	public boolean successAlertDisplayedOnSuccessfulLocationAddition() {
