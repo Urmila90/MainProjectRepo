@@ -22,6 +22,7 @@ public class CategoryTest extends Base {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserName(usernamevalue).enterPassword(passwordvalue);
 		// loginpage.enterPassword(passwordvalue);
+		// loginpage.clickSignin();
 		homepage = loginpage.clickSignin();
 
 		// CategoryPage categorypage = new CategoryPage(driver);

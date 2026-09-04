@@ -21,8 +21,9 @@ public class ManageDeliveryBoyTest extends Base {
 		String passwordvalue = ExcelUtility.getStringData(1, 1, "loginpage");
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserName(usernamevalue).enterPassword(passwordvalue);
+		homepage = loginpage.clickSignin();
+
 		// loginpage.enterPassword(passwordvalue);
-		loginpage.clickSignin();
 
 		// for chaining
 		// ManageDeliveryBoyPage deliveryboypage = new ManageDeliveryBoyPage(driver);

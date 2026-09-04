@@ -21,9 +21,10 @@ public class AdminUsersTest extends Base {
 		String usernamevalue = ExcelUtility.getStringData(1, 0, "loginpage");
 		String passwordvalue = ExcelUtility.getStringData(1, 1, "loginpage");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUserName(usernamevalue);
-		loginpage.enterPassword(passwordvalue);
-		loginpage.clickSignin();
+		loginpage.enterUserName(usernamevalue).enterPassword(passwordvalue);
+		// loginpage.enterPassword(passwordvalue);
+		// loginpage.clickSignin();
+		homepage = loginpage.clickSignin();
 
 		// AdminUsersPage adminuserspage = new AdminUsersPage(driver); //will apply
 		// chaining-so no need of this line

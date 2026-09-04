@@ -24,7 +24,8 @@ public class ManageLocationTest extends Base {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserName(usernamevalue).enterPassword(passwordvalue);
 		// loginpage.enterPassword(passwordvalue);
-		loginpage.clickSignin();
+		// loginpage.clickSignin();
+		homepage = loginpage.clickSignin();
 
 		// for chaining
 		// ManageLocationPage managelocation = new ManageLocationPage(driver);
