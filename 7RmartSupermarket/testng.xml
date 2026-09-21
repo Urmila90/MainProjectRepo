@@ -16,8 +16,7 @@
 		   	<class name="testscript1.ManageDeliveryBoyTest" />
 			<class name="testscript1.LogoutTest" />
 			<class name="testscript1.CategoryTest" />
-						<class name="testscript1.AdminUsersTest" />
-
+			<class name="testscript1.AdminUsersTest" />
 			<class name="testscript1.ManageLocationTest" /> -->
 			<class name="testscript1.LoginTest" />
 		</classes>
