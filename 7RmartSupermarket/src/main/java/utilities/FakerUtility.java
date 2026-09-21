@@ -10,7 +10,7 @@ public class FakerUtility {
 		return faker.name().firstName();
 
 	}
-
+  
 	public String creatARandomLastName() {
 
 		return faker.name().lastName();
